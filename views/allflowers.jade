@@ -18,3 +18,19 @@ html
 
 		hr
 		a(href="/") Flowers Home Page
+
+		// form to add new flower - name, color, and wiki page.
+		// TODO updload pictures
+		#addNewFlower
+
+			h2 Add New Flower
+
+			form(action="addNewFlower",method="post")
+				p Name
+					input#NewFlowerName(name="name" type="text" placeholder="name")
+				p Color
+					input#newFlowerColor(name="color" type="text" placeholder="color")
+				p Wikipedia Page
+					input#newFlowerLink(name="wiki" type="text" placeholder="wikipedia link")
+				button#saveNewFlower Save
+
