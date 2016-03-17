@@ -68,6 +68,7 @@ MongoClient.connect("mongodb://localhost:27017/garden", function(err, db){
   app.post("/addNewFlower", function(req, res) {
 	// TODO: don't allow duplicate flower names
 	//console.log(req.body);
+	var flower = req.body;
 	db.collection("flowers").count({"name":req.body.name}, function (err, count) {
 		//console.log(count);
 		// what to do with response?
@@ -87,7 +88,7 @@ MongoClient.connect("mongodb://localhost:27017/garden", function(err, db){
 				*/
 				//return res.sendStatus(409,"Duplicate entry");
 				// I'm going to send the user to an error page
-				return res.render("duplicateFlower");
+				return res.render("duplicateFlower", flower);
 			}
 		
 	});

@@ -1,5 +1,7 @@
 extends base
 
 block content
-	h2 Duplicate Record
-	p You appear to have entered a duplicate record.  Please go back and check your data entry, or update the existing record.
+	h2 Duplicate Record 
+	h1 #{name} appears to exist already!
+	p You appear to have entered a duplicate record.  Please go back and check your data entry, or update the existing record by going to 
+		a(href="/details/#{name}") #{name}
