@@ -1,26 +1,19 @@
-html
-	head
-		title Details for #{name}
-		link(href="/stylesheets/stylesheet.css" rel="stylesheet" type="text/css")
+extends base
 
-	body
+block content
 
-		h1#flowerName #{name}
+	h1#flowerName Details for #{name}
 
-		if image
-			img(src="/images/#{image}")
-		else
-			i (Sorry, no image available for #{name}.)
+	if image
+		img(src="/images/#{image}")
+	else
+		i (Sorry, no image available for #{name}.)
 
-		p #{name} is &#32;
-			span#flowerColor #{color}
+	p #{name} is &#32;
+		span#flowerColor #{color}
 
-		p Visit this flower's Wikipedia page at the following link,
-		a(href="#{wiki}") #{wiki}
+	p Visit this flower's Wikipedia page at the following link,
+	a(href="#{wiki}") #{wiki}
 
-		hr
-		a(href="/") Flowers Home Page
-		hr
-
-		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
-		script(src="/javascripts/changeFlowerColor.js")
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+	script(src="/javascripts/changeFlowerColor.js")

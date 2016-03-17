@@ -1,39 +1,35 @@
-html
-	head
-		title Flowers
-		link(href="/stylesheets/stylesheet.css" rel="stylesheet" type="text/css")
+extends base
 
-	body
-		h1 #{currentColor} Flowers
+block content
+	h1 #{currentColor} Flowers
 
-		form(action="showColors", method="get")
-			select(name='colorDropDown')
-				each color in flowerColors
-					option(value="#{color}") #{color}
-			input(type="submit" name="colorButton" value="Choose color")
+	form(action="showColors", method="get")
+		select(name='colorDropDown')
+			each color in flowerColors
+				option(value="#{color}") #{color}
+		input(type="submit" name="colorButton" value="Choose color")
 
-		ul
-			each flower in flowers
-				li 
-					a(href="/details/#{flower.name}") #{flower.name}
+	ul
+		each flower in flowers
+			li 
+				a(href="/details/#{flower.name}") #{flower.name}
 
-		hr
-		a(href="/") Flowers Home Page
+	hr
 
-		// form to add new flower - name, color, and wiki page.
-		// TODO updload pictures
-		#addNewFlower
+	// form to add new flower - name, color, and wiki page.
+	// TODO updload pictures
+	#addNewFlower
 
-			h2 Add New Flower
+		h2 Add New Flower
 
-			form(action="addNewFlower",method="post")
-				p Name
-					input#NewFlowerName(name="name" type="text" placeholder="name")
-				p Color
-					input#newFlowerColor(name="color" type="text" placeholder="color")
-				p Wikipedia Page
-					input#newFlowerLink(name="wiki" type="text" placeholder="wikipedia link")
-				button#saveNewFlower Save
+		form(action="addNewFlower",method="post")
+			p Name
+				input#newFlowerName(name="name" type="text" placeholder="name")
+			p Color
+				input#newFlowerColor(name="color" type="text" placeholder="color")
+			p Wikipedia Page
+				input#newFlowerLink(name="wiki" type="text" placeholder="wikipedia link")
+			button#saveNewFlower Save
 
-		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
-		script(src="/javascripts/newFlower.js")
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+	script(src="/javascripts/newFlower.js")

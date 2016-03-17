@@ -5,9 +5,9 @@ $(document).ready(function(){
 
 	$("#saveNewFlower").click(function(){
 		// check that we have data
-		var haveName = IsPresent($("#NewFlowerName").val());
-		var haveColor = IsPresent($("#NewFlowerColor").val());
-		//alert(haveName + ", " + haveColor);
+		var haveName = IsPresent($("#newFlowerName").val());
+		var haveColor = IsPresent($("#newFlowerColor").val());
+		alert(haveName + ", " + haveColor);
 		// if there is at least a flower name and flower color, submit the form.  otherwise:
 		if (!(haveName && haveColor)) 
 		{

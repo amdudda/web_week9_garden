@@ -67,23 +67,31 @@ MongoClient.connect("mongodb://localhost:27017/garden", function(err, db){
 
   app.post("/addNewFlower", function(req, res) {
 	// TODO: don't allow duplicate flower names
-	var countOfName = db.collection("flowers").find({"name":req.body}).count();
-	if (count == 0) 
-	{
-		// proceed with insert
-		 db.collection("flowers").insert(req.body, function(err, result){
-		   if (err) { return res.sendStatus(500); }
-		   return res.redirect('/'); //todo send success/fail back to client.
-		 });
-	}
-	else
-	{
-		// need to return something else??? an error code the client can check for?
-		/* http://stackoverflow.com/questions/3290182/rest-http-status-codes-for-failed-validation-or-invalid-duplicate
-		they suggest responding with 409 + a custom message
-		*/
-		return res.sendStatus(409,"Duplicate entry");
-	}
+	//console.log(req.body);
+	db.collection("flowers").count({"name":req.body.name}, function (err, count) {
+		//console.log(count);
+		// what to do with response?
+		if (count == 0) 
+			{
+				// proceed with insert
+				 db.collection("flowers").insert(req.body, function(err, result){
+				   if (err) { return res.sendStatus(500); }
+				   return res.redirect('/'); //todo send success/fail back to client.
+				 });
+			}
+			else
+			{
+				// need to return something else??? an error code the client can check for?
+				/* http://stackoverflow.com/questions/3290182/rest-http-status-codes-for-failed-validation-or-invalid-duplicate
+				they suggest responding with 409 + a custom message
+				*/
+				//return res.sendStatus(409,"Duplicate entry");
+				// I'm going to send the user to an error page
+				return res.render("duplicateFlower");
+			}
+		
+	});
+	
   });
 
 
