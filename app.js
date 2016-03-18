@@ -111,7 +111,8 @@ MongoClient.connect("mongodb://localhost:27017/garden", function(err, db){
         return res.sendStatus(500);
       } else {
         console.log("Updated - result: " + result)
-        return res.send({"color" : req.body.color});
+		var updated = " now "
+        return res.send({"color" : req.body.color, "updated" : updated});
         //Send the updated color back. AJAX is expecting a response.
       }
     });

@@ -20,7 +20,7 @@ $(document).ready(function(){
           "data" : data ,
           'url' : url
           }).done(function(result){
-            $("#flowerColor").text(result.color);
+            $("#flowerColor").text(" changed to " + result.color);
           }).fail(function(){
             console.log("error");  //TODO - something else?
           });

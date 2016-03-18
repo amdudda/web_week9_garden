@@ -2,18 +2,22 @@ extends base
 
 block content
 
-	h1#flowerName Details for #{name}
+	h1 Details for 
+		span#flowerName #{name}
 
 	if image
 		img(src="/images/#{image}")
 	else
 		i (Sorry, no image available for #{name}.)
 
-	p #{name} is &#32;
+	p #{name} is #{updated} &#32;
 		span#flowerColor #{color}
 
-	p Visit this flower's Wikipedia page at the following link,
-	a(href="#{wiki}") #{wiki}
+	if wiki
+		p Visit this flower's Wikipedia page at the following link,
+		a(href="#{wiki}") #{wiki}
+	else
+		i (Sorry, there is no wiki link available for this flower.)
 
 	script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
 	script(src="/javascripts/changeFlowerColor.js")
