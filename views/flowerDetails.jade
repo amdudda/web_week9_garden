@@ -4,15 +4,18 @@ block content
 
 	h1 Details for 
 		span#flowerName #{name}
+	
+	p Editable fields are underlined and will turn purple when you hover over them.
 
 	if image
 		img(src="/images/#{image}")
 	else
 		i (Sorry, no image available for #{name}.)
 
-	p #{name} &#32;
-		span#updated is &#32;
-		span#flowerColor #{color}
+	p 
+		span #{name}
+		span#updated &#32;is &#32;
+		span#flowerColor.databaseField #{color}
 
 	if wiki
 		p Visit this flower's Wikipedia page at the following link,

@@ -21,7 +21,7 @@ $(document).ready(function(){
           "data" : data ,
           'url' : url
           }).done(function(result){
-			$("#updated").text("has been changed to ");
+			$("#updated").text(" has been changed to ");
             $("#flowerColor").text(result.color);
           }).fail(function(){
             console.log("error");  //TODO - something else?

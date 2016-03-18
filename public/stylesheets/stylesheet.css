@@ -5,3 +5,11 @@ body {
 h1,h2 {
 	color: rebeccapurple;
 }
+#flowerColor:hover {
+	/* this gives people suggestion that color is editable when they hover over it */
+	color: rebeccapurple;
+}
+
+.databaseField {
+	text-decoration: underline;
+}
