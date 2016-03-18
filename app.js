@@ -71,9 +71,11 @@ MongoClient.connect("mongodb://localhost:27017/garden", function(err, db){
 	var flower = req.body;
 	db.collection("flowers").count({"name":req.body.name}, function (err, count) {
 		//console.log(count);
-		// what to do with response?
+		// respond appropriately depending on whether flower already exists
 		if (count == 0) 
 			{
+				// convert to lowercase
+				req.body.name = req.body.name.toLowerCase();
 				// proceed with insert
 				 db.collection("flowers").insert(req.body, function(err, result){
 				   if (err) { return res.sendStatus(500); }
@@ -87,7 +89,7 @@ MongoClient.connect("mongodb://localhost:27017/garden", function(err, db){
 				they suggest responding with 409 + a custom message
 				*/
 				//return res.sendStatus(409,"Duplicate entry");
-				// I'm going to send the user to an error page
+				// I'm going to send the user to a notification page instead.
 				return res.render("duplicateFlower", flower);
 			}
 		
