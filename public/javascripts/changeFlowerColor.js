@@ -6,6 +6,7 @@ $(document).ready(function(){
     (input).insertAfter($(this))
     var instructions = $("<i>Press Enter to save, Esc to cancel</i>");
     instructions.insertAfter(input);
+	input.focus();
 
     input.keypress(function(event){
       //Submit changes by pressing enter
@@ -20,7 +21,8 @@ $(document).ready(function(){
           "data" : data ,
           'url' : url
           }).done(function(result){
-            $("#flowerColor").text(" changed to " + result.color);
+			$("#updated").text("has been changed to ");
+            $("#flowerColor").text(result.color);
           }).fail(function(){
             console.log("error");  //TODO - something else?
           });
